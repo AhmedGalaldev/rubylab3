@@ -1,7 +1,12 @@
 class ArticlesController < ApplicationController
      
-     http_basic_authenticate_with name: "dhh", password: "secret", except: [:index, :show]
+     # http_basic_authenticate_with name: "dhh", password: "secret", except: [:index, :show]
+     before_action :authenticate_user!
+     #    user_signed_in?
 
+     #    user_member
+
+     #    user_session
 
      def new
             @article = Article.new
@@ -14,6 +19,7 @@ class ArticlesController < ApplicationController
 
      def show
        @article = Article.find(params[:id])
+
      end
 
      def create
